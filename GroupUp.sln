@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupUp", "GroupUp.csproj", "{953DD8EB-522A-443E-9C44-5DB3769C879F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{953DD8EB-522A-443E-9C44-5DB3769C879F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{953DD8EB-522A-443E-9C44-5DB3769C879F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{953DD8EB-522A-443E-9C44-5DB3769C879F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{953DD8EB-522A-443E-9C44-5DB3769C879F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC595AF5-2B3F-4E9B-BAB3-E627DFB5AF7C}
+	EndGlobalSection
+EndGlobal
