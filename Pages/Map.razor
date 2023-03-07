@@ -1,0 +1,45 @@
+﻿@page "/map"
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Map</PageTitle>
+
+<h1>Display Google Map</h1>
+<div style="width:100%;" class="container">
+    <div class="row">
+        <div class="col-sm-12 btn-group" style="padding-top:10px;text-align:left;">
+            <input id="you-input" class="searchBox" type="text" placeholder="Where are you?" />
+        </div>
+    </div>
+</div>
+<div style="width:100%;" class="container">
+    <div class="row">
+        <div class="col-sm-12 btn-group" style="padding-top:10px;text-align:left;">
+            <input id="per1-input" class="searchBox" type="text" placeholder="Where is person1?" />
+        </div>
+    </div>
+</div>
+<div id="map" class="map" style="height:50vh;width:100%;">
+</div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initMap", null);
+        }
+    }
+}
+
+<style>
+    .searchBox {
+        background-color: #fff;
+        padding: 0 11px 0 13px;
+        width: 100%;
+        height: 35px;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        text-overflow: ellipsis;
+    }
+</style>
