@@ -7,6 +7,8 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
+<button class="btn btn-primary" @onclick="TestData">Click me</button>
+
 @if (forecasts == null)
 {
     <p><em>Loading...</em></p>
@@ -37,11 +39,11 @@ else
 }
 
 @code {
-    private WeatherForecast[]? forecasts;
+    private List<WeatherForecast> forecasts = new List<WeatherForecast>();
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        await LoadData();
     }
 
     public class WeatherForecast
@@ -53,5 +55,32 @@ else
         public string? Summary { get; set; }
 
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+
+    private async Task LoadData()
+    {
+        var val = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        WeatherForecast[] valn = val ?? new WeatherForecast[0];
+        forecasts = new List<WeatherForecast>(valn);
+    }
+
+    private async Task UpdateData()
+    {
+        await Http.PatchAsJsonAsync("sample-data/weather.json", forecasts);
+    }
+
+    private async void TestData()
+    {
+        Random rand = new Random();
+
+        WeatherForecast i = new WeatherForecast()
+            {
+                Date = new DateOnly(rand.Next(1000, 2000), rand.Next(1, 13), rand.Next(1, 28)),
+                TemperatureC = rand.Next(-50, 50),
+                Summary = "Test " + rand.Next(0, 1000000),
+            };
+        forecasts.Add(i);
+
+        await UpdateData();
     }
 }
